@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 6.1.1 (Python 3.12.1 on win32)" generated="20231226 23:01:40.146" rpa="false" schemaversion="4">
+<suite id="s1" name="PathologyLab" source="C:\Users\Muzammil\OneDrive\Desktop\Projects\Testing Projects\PathologyLab">
+<suite id="s1-s1" name="loginTest" source="C:\Users\Muzammil\OneDrive\Desktop\Projects\Testing Projects\PathologyLab\loginTest.robot">
+<test id="s1-s1-t1" name="TC_LOGIN_02" line="18">
+<kw name="Setup Browser" library="setup" type="SETUP">
+<kw name="Open Browser" library="SeleniumLibrary">
+<arg>${url}</arg>
+<arg>${browserName}</arg>
+<doc>Opens a new browser instance to the optional ``url``.</doc>
+<msg timestamp="20231226 23:01:40.784" level="INFO">Opening browser 'chrome' to base url 'https://gor-pathology.web.app/'.</msg>
+<status status="PASS" starttime="20231226 23:01:40.784" endtime="20231226 23:01:43.240"/>
+</kw>
+<status status="PASS" starttime="20231226 23:01:40.784" endtime="20231226 23:01:43.240"/>
+</kw>
+<kw name="Enter invalid username" library="loginPage">
+<kw name="Wait Until Element Is Visible" library="SeleniumLibrary">
+<arg>${usernameField}</arg>
+<arg>5s</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" starttime="20231226 23:01:43.240" endtime="20231226 23:01:43.513"/>
+</kw>
+<kw name="Input Text" library="SeleniumLibrary">
+<arg>${usernameField}</arg>
+<arg>${invalidUsername}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<msg timestamp="20231226 23:01:43.518" level="INFO">Typing text 'hello@gmail' into text field 'xpath=//input[@name="email"]'.</msg>
+<status status="PASS" starttime="20231226 23:01:43.513" endtime="20231226 23:01:43.735"/>
+</kw>
+<status status="PASS" starttime="20231226 23:01:43.240" endtime="20231226 23:01:43.735"/>
+</kw>
+<kw name="Enter invalid Password" library="loginPage">
+<kw name="Wait Until Element Is Visible" library="SeleniumLibrary">
+<arg>${passwordField}</arg>
+<arg>5s</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" starttime="20231226 23:01:43.735" endtime="20231226 23:01:43.827"/>
+</kw>
+<kw name="Input Text" library="SeleniumLibrary">
+<arg>${passwordField}</arg>
+<arg>${invalidPassowrd}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<msg timestamp="20231226 23:01:43.827" level="INFO">Typing text 'ehhlsaklf' into text field 'xpath=//input[@name="password"]'.</msg>
+<status status="PASS" starttime="20231226 23:01:43.827" endtime="20231226 23:01:44.055"/>
+</kw>
+<status status="PASS" starttime="20231226 23:01:43.735" endtime="20231226 23:01:44.055"/>
+</kw>
+<kw name="Click Login Button" library="loginPage">
+<kw name="Wait Until Element Is Visible" library="SeleniumLibrary">
+<arg>${loginButton}</arg>
+<arg>5s</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" starttime="20231226 23:01:44.055" endtime="20231226 23:01:44.128"/>
+</kw>
+<kw name="Click Element" library="SeleniumLibrary">
+<arg>${loginButton}</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<msg timestamp="20231226 23:01:44.128" level="INFO">Clicking element 'xpath=//span[text()="Login"]'.</msg>
+<status status="PASS" starttime="20231226 23:01:44.128" endtime="20231226 23:01:44.249"/>
+</kw>
+<status status="PASS" starttime="20231226 23:01:44.055" endtime="20231226 23:01:44.249"/>
+</kw>
+<kw name="Validate Error message is displayed" library="loginPage">
+<kw name="Wait Until Element Is Visible" library="SeleniumLibrary">
+<arg>${errorMsg}</arg>
+<arg>5s</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" starttime="20231226 23:01:44.254" endtime="20231226 23:01:45.217"/>
+</kw>
+<kw name="Element Should Contain" library="SeleniumLibrary">
+<arg>${errorMsg}</arg>
+<arg>${errorMessage}</arg>
+<doc>Verifies that element ``locator`` contains text ``expected``.</doc>
+<msg timestamp="20231226 23:01:45.270" level="INFO">Element 'xpath=//div[@class="MuiAlert-message"]' contains text 'There is no user record corresponding to this identifier. The user may have been deleted.'.</msg>
+<status status="PASS" starttime="20231226 23:01:45.217" endtime="20231226 23:01:45.270"/>
+</kw>
+<status status="PASS" starttime="20231226 23:01:44.254" endtime="20231226 23:01:45.270"/>
+</kw>
+<kw name="Close All Browsers" library="SeleniumLibrary" type="TEARDOWN">
+<doc>Closes all open browsers and resets the browser cache.</doc>
+<status status="PASS" starttime="20231226 23:01:45.284" endtime="20231226 23:01:51.551"/>
+</kw>
+<status status="PASS" starttime="20231226 23:01:40.776" endtime="20231226 23:01:51.551"/>
+</test>
+<status status="PASS" starttime="20231226 23:01:40.221" endtime="20231226 23:01:51.554"/>
+</suite>
+<status status="PASS" starttime="20231226 23:01:40.152" endtime="20231226 23:01:51.556"/>
+</suite>
+<statistics>
+<total>
+<stat pass="1" fail="0" skip="0">All Tests</stat>
+</total>
+<tag>
+</tag>
+<suite>
+<stat pass="1" fail="0" skip="0" id="s1" name="PathologyLab">PathologyLab</stat>
+<stat pass="1" fail="0" skip="0" id="s1-s1" name="loginTest">PathologyLab.loginTest</stat>
+</suite>
+</statistics>
+<errors>
+</errors>
+</robot>
