@@ -21,6 +21,8 @@ TC_CALCULATOR_02
     Login with valid credetials
     Extract required information from excel    tc calculator     TC_CALCULATOR_01_DATA02
     Fill information into tests input    
+
+  
    
 
 
