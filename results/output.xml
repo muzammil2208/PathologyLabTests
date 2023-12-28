@@ -1,90 +1,213 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<robot generator="Robot 6.1.1 (Python 3.12.1 on win32)" generated="20231226 23:01:40.146" rpa="false" schemaversion="4">
+<robot generator="Robot 6.1.1 (Python 3.12.1 on win32)" generated="20231228 11:41:51.004" rpa="false" schemaversion="4">
 <suite id="s1" name="PathologyLab" source="C:\Users\Muzammil\OneDrive\Desktop\Projects\Testing Projects\PathologyLab">
-<suite id="s1-s1" name="loginTest" source="C:\Users\Muzammil\OneDrive\Desktop\Projects\Testing Projects\PathologyLab\loginTest.robot">
-<test id="s1-s1-t1" name="TC_LOGIN_02" line="18">
-<kw name="Setup Browser" library="setup" type="SETUP">
-<kw name="Open Browser" library="SeleniumLibrary">
-<arg>${url}</arg>
-<arg>${browserName}</arg>
-<doc>Opens a new browser instance to the optional ``url``.</doc>
-<msg timestamp="20231226 23:01:40.784" level="INFO">Opening browser 'chrome' to base url 'https://gor-pathology.web.app/'.</msg>
-<status status="PASS" starttime="20231226 23:01:40.784" endtime="20231226 23:01:43.240"/>
+<suite id="s1-s1" name="TestCalculator" source="C:\Users\Muzammil\OneDrive\Desktop\Projects\Testing Projects\PathologyLab\TestCalculator.robot">
+<test id="s1-s1-t1" name="TC_TRIAL" line="17">
+<kw name="Read data from Excel" library="ExcelLib">
+<var>${testsName}</var>
+<var>${discount}</var>
+<var>${subtotal}</var>
+<var>${total}</var>
+<arg>tc calculator</arg>
+<arg>TC_CALCUALTOR_01_DATA01</arg>
+<kw name="Open Excel" library="ExcelUtil">
+<arg>TestData/TestData.xlsx</arg>
+<doc>Open excel file
+Arguments:
+    | File             | Filename with fullpath to open and test upon        |</doc>
+<status status="PASS" starttime="20231228 11:41:51.418" endtime="20231228 11:41:51.423"/>
 </kw>
-<status status="PASS" starttime="20231226 23:01:40.784" endtime="20231226 23:01:43.240"/>
+<kw name="Get Row Count" library="ExcelUtil">
+<var>${rowCount}</var>
+<arg>${sheetName}</arg>
+<doc>Return the Row count of the given sheet
+Example:
+| Open Excel      |  C:\Data\ExcelTest.xlsx  |
+| Get Row count     |  Sheet1 |</doc>
+<msg timestamp="20231228 11:41:51.423" level="INFO">${rowCount} = 4</msg>
+<status status="PASS" starttime="20231228 11:41:51.423" endtime="20231228 11:41:51.423"/>
 </kw>
-<kw name="Enter invalid username" library="loginPage">
-<kw name="Wait Until Element Is Visible" library="SeleniumLibrary">
-<arg>${usernameField}</arg>
-<arg>5s</arg>
-<doc>Waits until the element ``locator`` is visible.</doc>
-<status status="PASS" starttime="20231226 23:01:43.240" endtime="20231226 23:01:43.513"/>
+<kw name="Log" library="BuiltIn">
+<arg>${rowCount}</arg>
+<doc>Logs the given message with the given level.</doc>
+<msg timestamp="20231228 11:41:51.423" level="INFO">4</msg>
+<status status="PASS" starttime="20231228 11:41:51.423" endtime="20231228 11:41:51.431"/>
 </kw>
-<kw name="Input Text" library="SeleniumLibrary">
-<arg>${usernameField}</arg>
-<arg>${invalidUsername}</arg>
-<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
-<msg timestamp="20231226 23:01:43.518" level="INFO">Typing text 'hello@gmail' into text field 'xpath=//input[@name="email"]'.</msg>
-<status status="PASS" starttime="20231226 23:01:43.513" endtime="20231226 23:01:43.735"/>
+<kw name="Get Column Count" library="ExcelUtil">
+<var>${columnCount}</var>
+<arg>${sheetName}</arg>
+<doc>Return the column count of the given sheet
+Example:
+| Open Excel      |  C:\Data\ExcelTest.xlsx  |
+| Get Column count     |  Sheet1 |</doc>
+<msg timestamp="20231228 11:41:51.432" level="INFO">${columnCount} = 5</msg>
+<status status="PASS" starttime="20231228 11:41:51.432" endtime="20231228 11:41:51.432"/>
 </kw>
-<status status="PASS" starttime="20231226 23:01:43.240" endtime="20231226 23:01:43.735"/>
+<for flavor="IN RANGE">
+<var>${rowIndex}</var>
+<value>2</value>
+<value>${rowCount}</value>
+<iter>
+<var name="${rowIndex}">2</var>
+<kw name="Read Cell Data By Coordinates" library="ExcelUtil">
+<var>${tcN}</var>
+<arg>${sheetName}</arg>
+<arg>${rowIndex}</arg>
+<arg>1</arg>
+<doc>Return the value of a cell by giving the sheetname, row value &amp; column value
+Example:
+| Read Cell Data By Coordinates     |  SheetName | Row Number |  Column Number  |
+| Read Cell Data By Coordinates     |  Sheet1 |  1  |  1  |
+ To pass integer arguments
+| Read Cell Data By Coordinates     |  Sheet1 |  ${1}  |  ${3}  |</doc>
+<msg timestamp="20231228 11:41:51.432" level="INFO">${tcN} = TC_CALCUALTOR_01_DATA01</msg>
+<status status="PASS" starttime="20231228 11:41:51.432" endtime="20231228 11:41:51.440"/>
 </kw>
-<kw name="Enter invalid Password" library="loginPage">
-<kw name="Wait Until Element Is Visible" library="SeleniumLibrary">
-<arg>${passwordField}</arg>
-<arg>5s</arg>
-<doc>Waits until the element ``locator`` is visible.</doc>
-<status status="PASS" starttime="20231226 23:01:43.735" endtime="20231226 23:01:43.827"/>
+<kw name="Log" library="BuiltIn">
+<arg>calculated ${tcN} atual ${tc_Name}</arg>
+<doc>Logs the given message with the given level.</doc>
+<msg timestamp="20231228 11:41:51.440" level="INFO">calculated TC_CALCUALTOR_01_DATA01 atual TC_CALCUALTOR_01_DATA01</msg>
+<status status="PASS" starttime="20231228 11:41:51.440" endtime="20231228 11:41:51.442"/>
 </kw>
-<kw name="Input Text" library="SeleniumLibrary">
-<arg>${passwordField}</arg>
-<arg>${invalidPassowrd}</arg>
-<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
-<msg timestamp="20231226 23:01:43.827" level="INFO">Typing text 'ehhlsaklf' into text field 'xpath=//input[@name="password"]'.</msg>
-<status status="PASS" starttime="20231226 23:01:43.827" endtime="20231226 23:01:44.055"/>
+<if>
+<branch type="IF" condition="'${tc_Name}'=='${tcN}'">
+<kw name="Get all row information" library="ExcelLib">
+<var>${TestsName}</var>
+<var>${discount}</var>
+<var>${subtotal}</var>
+<var>${total}</var>
+<arg>${sheetName}</arg>
+<arg>${rowIndex}</arg>
+<arg>${columnCount}</arg>
+<doc>this is to extract all row information</doc>
+<kw name="Read Cell Data By Coordinates" library="ExcelUtil">
+<var>${TestsName}</var>
+<arg>${sheetName}</arg>
+<arg>${rowIndex}</arg>
+<arg>2</arg>
+<doc>Return the value of a cell by giving the sheetname, row value &amp; column value
+Example:
+| Read Cell Data By Coordinates     |  SheetName | Row Number |  Column Number  |
+| Read Cell Data By Coordinates     |  Sheet1 |  1  |  1  |
+ To pass integer arguments
+| Read Cell Data By Coordinates     |  Sheet1 |  ${1}  |  ${3}  |</doc>
+<msg timestamp="20231228 11:41:51.444" level="INFO">${TestsName} = AFP </msg>
+<status status="PASS" starttime="20231228 11:41:51.444" endtime="20231228 11:41:51.445"/>
 </kw>
-<status status="PASS" starttime="20231226 23:01:43.735" endtime="20231226 23:01:44.055"/>
+<kw name="Read Cell Data By Coordinates" library="ExcelUtil">
+<var>${discount}</var>
+<arg>${sheetName}</arg>
+<arg>${rowIndex}</arg>
+<arg>3</arg>
+<doc>Return the value of a cell by giving the sheetname, row value &amp; column value
+Example:
+| Read Cell Data By Coordinates     |  SheetName | Row Number |  Column Number  |
+| Read Cell Data By Coordinates     |  Sheet1 |  1  |  1  |
+ To pass integer arguments
+| Read Cell Data By Coordinates     |  Sheet1 |  ${1}  |  ${3}  |</doc>
+<msg timestamp="20231228 11:41:51.445" level="INFO">${discount} = 5%</msg>
+<status status="PASS" starttime="20231228 11:41:51.445" endtime="20231228 11:41:51.447"/>
 </kw>
-<kw name="Click Login Button" library="loginPage">
-<kw name="Wait Until Element Is Visible" library="SeleniumLibrary">
-<arg>${loginButton}</arg>
-<arg>5s</arg>
-<doc>Waits until the element ``locator`` is visible.</doc>
-<status status="PASS" starttime="20231226 23:01:44.055" endtime="20231226 23:01:44.128"/>
+<kw name="Read Cell Data By Coordinates" library="ExcelUtil">
+<var>${subtotal}</var>
+<arg>${sheetName}</arg>
+<arg>${rowIndex}</arg>
+<arg>4</arg>
+<doc>Return the value of a cell by giving the sheetname, row value &amp; column value
+Example:
+| Read Cell Data By Coordinates     |  SheetName | Row Number |  Column Number  |
+| Read Cell Data By Coordinates     |  Sheet1 |  1  |  1  |
+ To pass integer arguments
+| Read Cell Data By Coordinates     |  Sheet1 |  ${1}  |  ${3}  |</doc>
+<msg timestamp="20231228 11:41:51.449" level="INFO">${subtotal} = 300</msg>
+<status status="PASS" starttime="20231228 11:41:51.447" endtime="20231228 11:41:51.449"/>
 </kw>
-<kw name="Click Element" library="SeleniumLibrary">
-<arg>${loginButton}</arg>
-<doc>Click the element identified by ``locator``.</doc>
-<msg timestamp="20231226 23:01:44.128" level="INFO">Clicking element 'xpath=//span[text()="Login"]'.</msg>
-<status status="PASS" starttime="20231226 23:01:44.128" endtime="20231226 23:01:44.249"/>
+<kw name="Read Cell Data By Coordinates" library="ExcelUtil">
+<var>${total}</var>
+<arg>${sheetName}</arg>
+<arg>${rowIndex}</arg>
+<arg>5</arg>
+<doc>Return the value of a cell by giving the sheetname, row value &amp; column value
+Example:
+| Read Cell Data By Coordinates     |  SheetName | Row Number |  Column Number  |
+| Read Cell Data By Coordinates     |  Sheet1 |  1  |  1  |
+ To pass integer arguments
+| Read Cell Data By Coordinates     |  Sheet1 |  ${1}  |  ${3}  |</doc>
+<msg timestamp="20231228 11:41:51.449" level="INFO">${total} = 332.5</msg>
+<status status="PASS" starttime="20231228 11:41:51.449" endtime="20231228 11:41:51.449"/>
 </kw>
-<status status="PASS" starttime="20231226 23:01:44.055" endtime="20231226 23:01:44.249"/>
+<msg timestamp="20231228 11:41:51.449" level="INFO">${TestsName} = AFP </msg>
+<msg timestamp="20231228 11:41:51.449" level="INFO">${discount} = 5%</msg>
+<msg timestamp="20231228 11:41:51.449" level="INFO">${subtotal} = 300</msg>
+<msg timestamp="20231228 11:41:51.456" level="INFO">${total} = 332.5</msg>
+<status status="PASS" starttime="20231228 11:41:51.443" endtime="20231228 11:41:51.456"/>
 </kw>
-<kw name="Validate Error message is displayed" library="loginPage">
-<kw name="Wait Until Element Is Visible" library="SeleniumLibrary">
-<arg>${errorMsg}</arg>
-<arg>5s</arg>
-<doc>Waits until the element ``locator`` is visible.</doc>
-<status status="PASS" starttime="20231226 23:01:44.254" endtime="20231226 23:01:45.217"/>
+<status status="PASS" starttime="20231228 11:41:51.442" endtime="20231228 11:41:51.456"/>
+</branch>
+<status status="PASS" starttime="20231228 11:41:51.442" endtime="20231228 11:41:51.456"/>
+</if>
+<status status="PASS" starttime="20231228 11:41:51.432" endtime="20231228 11:41:51.456"/>
+</iter>
+<iter>
+<var name="${rowIndex}">3</var>
+<kw name="Read Cell Data By Coordinates" library="ExcelUtil">
+<var>${tcN}</var>
+<arg>${sheetName}</arg>
+<arg>${rowIndex}</arg>
+<arg>1</arg>
+<doc>Return the value of a cell by giving the sheetname, row value &amp; column value
+Example:
+| Read Cell Data By Coordinates     |  SheetName | Row Number |  Column Number  |
+| Read Cell Data By Coordinates     |  Sheet1 |  1  |  1  |
+ To pass integer arguments
+| Read Cell Data By Coordinates     |  Sheet1 |  ${1}  |  ${3}  |</doc>
+<msg timestamp="20231228 11:41:51.459" level="INFO">${tcN} = TC_CALCUALTOR_01_DATA02</msg>
+<status status="PASS" starttime="20231228 11:41:51.459" endtime="20231228 11:41:51.459"/>
 </kw>
-<kw name="Element Should Contain" library="SeleniumLibrary">
-<arg>${errorMsg}</arg>
-<arg>${errorMessage}</arg>
-<doc>Verifies that element ``locator`` contains text ``expected``.</doc>
-<msg timestamp="20231226 23:01:45.270" level="INFO">Element 'xpath=//div[@class="MuiAlert-message"]' contains text 'There is no user record corresponding to this identifier. The user may have been deleted.'.</msg>
-<status status="PASS" starttime="20231226 23:01:45.217" endtime="20231226 23:01:45.270"/>
+<kw name="Log" library="BuiltIn">
+<arg>calculated ${tcN} atual ${tc_Name}</arg>
+<doc>Logs the given message with the given level.</doc>
+<msg timestamp="20231228 11:41:51.459" level="INFO">calculated TC_CALCUALTOR_01_DATA02 atual TC_CALCUALTOR_01_DATA01</msg>
+<status status="PASS" starttime="20231228 11:41:51.459" endtime="20231228 11:41:51.459"/>
 </kw>
-<status status="PASS" starttime="20231226 23:01:44.254" endtime="20231226 23:01:45.270"/>
+<if>
+<branch type="IF" condition="'${tc_Name}'=='${tcN}'">
+<kw name="Get all row information" library="ExcelLib">
+<var>${TestsName}</var>
+<var>${discount}</var>
+<var>${subtotal}</var>
+<var>${total}</var>
+<arg>${sheetName}</arg>
+<arg>${rowIndex}</arg>
+<arg>${columnCount}</arg>
+<doc>this is to extract all row information</doc>
+<status status="NOT RUN" starttime="20231228 11:41:51.463" endtime="20231228 11:41:51.464"/>
 </kw>
-<kw name="Close All Browsers" library="SeleniumLibrary" type="TEARDOWN">
-<doc>Closes all open browsers and resets the browser cache.</doc>
-<status status="PASS" starttime="20231226 23:01:45.284" endtime="20231226 23:01:51.551"/>
+<status status="NOT RUN" starttime="20231228 11:41:51.463" endtime="20231228 11:41:51.465"/>
+</branch>
+<status status="PASS" starttime="20231228 11:41:51.463" endtime="20231228 11:41:51.465"/>
+</if>
+<status status="PASS" starttime="20231228 11:41:51.456" endtime="20231228 11:41:51.465"/>
+</iter>
+<status status="PASS" starttime="20231228 11:41:51.432" endtime="20231228 11:41:51.465"/>
+</for>
+<msg timestamp="20231228 11:41:51.465" level="INFO">${testsName} = AFP </msg>
+<msg timestamp="20231228 11:41:51.465" level="INFO">${discount} = 5%</msg>
+<msg timestamp="20231228 11:41:51.465" level="INFO">${subtotal} = 300</msg>
+<msg timestamp="20231228 11:41:51.468" level="INFO">${total} = 332.5</msg>
+<status status="PASS" starttime="20231228 11:41:51.416" endtime="20231228 11:41:51.468"/>
 </kw>
-<status status="PASS" starttime="20231226 23:01:40.776" endtime="20231226 23:01:51.551"/>
+<kw name="Log" library="BuiltIn">
+<arg>${testsName}</arg>
+<doc>Logs the given message with the given level.</doc>
+<msg timestamp="20231228 11:41:51.471" level="INFO">AFP </msg>
+<status status="PASS" starttime="20231228 11:41:51.470" endtime="20231228 11:41:51.472"/>
+</kw>
+<status status="PASS" starttime="20231228 11:41:51.411" endtime="20231228 11:41:51.472"/>
 </test>
-<status status="PASS" starttime="20231226 23:01:40.221" endtime="20231226 23:01:51.554"/>
+<status status="PASS" starttime="20231228 11:41:51.043" endtime="20231228 11:41:51.476"/>
 </suite>
-<status status="PASS" starttime="20231226 23:01:40.152" endtime="20231226 23:01:51.556"/>
+<status status="PASS" starttime="20231228 11:41:51.011" endtime="20231228 11:41:51.484"/>
 </suite>
 <statistics>
 <total>
@@ -94,7 +217,7 @@
 </tag>
 <suite>
 <stat pass="1" fail="0" skip="0" id="s1" name="PathologyLab">PathologyLab</stat>
-<stat pass="1" fail="0" skip="0" id="s1-s1" name="loginTest">PathologyLab.loginTest</stat>
+<stat pass="1" fail="0" skip="0" id="s1-s1" name="TestCalculator">PathologyLab.TestCalculator</stat>
 </suite>
 </statistics>
 <errors>
