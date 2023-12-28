@@ -1,6 +1,6 @@
 *** Settings ***
 
-Library     Selenium2Library
+Library     SeleniumLibrary
 Library         ExcelUtil
 Library    Collections
 
@@ -19,11 +19,11 @@ Read data from Excel
         ${tcN}    Read Cell Data By Coordinates   ${sheetName}      ${rowIndex}    1  
         Log   calculated ${tcN} atual ${tc_Name}
         IF    '${tc_Name}'=='${tcN}'
-             ${TestsName}    ${discount}    ${subtotal}    ${total}       Get all row information   ${sheetName}    ${rowIndex}   ${columnCount}
+             ${tname}     ${dis}     ${subt}     ${tot}   Get all row information   ${sheetName}    ${rowIndex}   ${columnCount}
         END
     END
    
-    [return]        ${TestsName}    ${discount}    ${subtotal}    ${total}
+    [return]      ${tname}     ${dis}     ${subt}     ${tot} 
     # Reading No of Columns in Excel Sheet
 
 Get all row information

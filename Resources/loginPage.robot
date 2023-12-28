@@ -30,6 +30,7 @@ Enter valid Password
 Click Login Button 
     Wait Until Element Is Visible    ${loginButton}    5s
     Click Element    ${loginButton}
+    Sleep    5s
 
 Enter invalid username
     Wait Until Element Is Visible    ${usernameField}    5s
