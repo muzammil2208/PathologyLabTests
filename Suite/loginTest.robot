@@ -1,9 +1,10 @@
 *** Settings ***
 
-Library    SeleniumLibrary
-Resource    Resources/loginPage.robot
-Resource    Resources/setup.robot
-Resource    Resources/Dashboard.robot
+Library     SeleniumLibrary
+Resource    ../Resources/loginPage.robot
+Resource    ../Resources/setup.robot    
+Resource    ../Resources/Dashboard.robot
+Library      ../utils/apitest.py
 Test Teardown    Close All Browsers
 
 *** Test Cases ***
